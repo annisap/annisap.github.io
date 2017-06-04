@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="This is a blog for everyone who finds passion in the science of data.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Annie Sap">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Recommendation Systems"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mirror Into Data"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Recommendation Systems - Mirror Into Data</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Mirror Into Data</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>Recommendation Systems</h1>
+
+
+    <span class="image main"><img src="https://weddings.popupsites.com/blog/wp-content/uploads/sites/58/2017/03/Black-Mirror-app.jpg" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p>Recommendation plays an increasingly important role in our daily lives. LinkedIn, Netflix, and Amazon among others use recommender systems to find patterns of activities between different users and patterns of features between different items so as to produce recommendations to users. Not only giant companies, but almost every online business domain exploits recommendation systems’ magic in order to advocate the user’s searching experience. Knowledge in building machine learning algorithms to recommender systems is a skill often required for the data scientist. </p>
+<p><strong>In this post, you’ll read about:</strong></p>
+<p>What is content-based and collaborative filtering?<br>Low rank matrix factorization algorithm<br>What are some traditional and novel methods for recommender systems?<br>What is data scarcity and cold star issue?<br>How social networks’ data are combined into recommender systems?<br>What is Privacy Preserving Collaborative Filtering?</p>
+<p>Recommendation algorithms exploit predictive analysis on a user-item matrix so as to find items that users have not come across/rate (implicitly or explicitly) but they may be interested to them. These items variables are called latent variables because they are inferred rather than observed.<br>Both users and items have attributes. The more you know about your users and items, the better results can be expected. Usually at first, while you know little about your users’ tastes and preferences, you might base recommendations on item attributes alone (content-based) although user attributes (collaborative filtering) offer more accurate insights.</p>
+<p>Existing recommender schemes can be divided into three categories based on the methods they are build, </p>
+<ul>
+<li>content-based,</li>
+<li>collaborative filtering (CF),</li>
+<li>and hybrid approaches. </li>
+</ul>
+<p>The former exploits properties of an item on user past preferences to predict a user’s interest towards the item while the second leverages explicit feedback (e.g., the user assigns a rating to an item) and/or implicit feedback (e.g., the user clicks on a link) from each individual user. There are also variations inside these two approaches.  For instance, case-based recommendation system is a variation of content-based approach that recommends items which are similar to what users have indicated as interesting). Community-based system is a variation of CF technique that follows the epigram “Tell me who your friends are, and I will tell you who you are” and it recommends items based on the preferences of the user’s friends (Ricci et.al (2011)). </p>
+<p>Matrix factorization models map both users and items to a joint latent factor space, such that user-item interactions are modelled as inner products in that space <a href="#1"><sup>1</sup></a>. The low rank matrix factorization is the most known Collaborative filtering algorithm. We will see it without regularization in order to keep things simple but in a real-life problem we would use regularization terms.</p>
+<p>Let’s say we have the following variables:</p>
+<blockquote>
+<p>b: the total number of books<br>u: the total number of users<br>R(i,j): a matrix filled with ones and zeros. The i-th row and j-th column of R are equal to 1 if a user j gave a rating to book i, otherwise it’s 0.<br>Y(i,j): The i-th row and j-th column of Y represent the rating (range:1-5) that user j gave to book i, and when the user j  has not rated the book I, then this entry is equal to zero.<br>X(i): is a vector where each row has numbers representing the volume of features of each movie. A fature could be sci-fi and it could be equal to 0.9 for the book ‘The Man in the High Castle, (1963), whereas for the book ‘The Rosie Project’ (2013) it could be equal to -0.4.<br>θ(j): is a vector where each row has numbers representing the volume of each users’ preferences on the books’ features. </p>
+</blockquote>
+<p>Our goal is to predict what is the rating that user Elliot Alderson would give to book  The Man in the High Castle, according to the formula:</p>
+<div style="display: flex; justify-content: center; width: 100%"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">predictions = X*θ&apos;</div></pre></td></tr></table></figure><br><br></div>
+
+<p>(‘):Transpose-&gt; The thing it does is just to reverse the columns of θ into rows, and the rows of θ into columns.</p>
+<p>We will extremely simply formulate the problem of gradient descent and mean squared error function for those who have not ever came across on machine learning concepts so as to be able to follow up. The problem is formulated as:</p>
+<p>‘Find me the values of the parameters (aka Gradient Descents) so that the average between my training and prediction values to minimized (aka mean squared error)’.</p>
+<div style="display: flex; justify-content: center; width: 100%"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sqrErr = (predictions-y).* R </div><div class="line">J = 1/2 * sumsq(sqrErr(:))</div><div class="line">X_grad = sqrErr*θ</div><div class="line">Theta_grad = sqrErr&apos; * X</div></pre></td></tr></table></figure><br><br></div>
+
+<p>(:) stands for all the entries of the matrix<br>.* stands for element wise multiplication<br>sumsq(X) stands for the sum of squares of elements of X matrix<br>Note that the syntax of the algorithm applies to Matlab and Octave.<br>In few words,it  is problem that we are trying to find out the values of parameters of Θ  and X to optimize the mean squared error. The non-zeros values of Y will be the training data that would help us to infer the zeros values. These variables (zeros) are called latent because they are estimated from other variables rather than observed.</p>
+<p>Traditional methods for CF:</p>
+<ul>
+<li>Nearest-neighbors</li>
+<li>Matrix Factorization</li>
+<li>Restricted Boltzmann Machines</li>
+<li>Clustering and LSH</li>
+<li>Association Rules</li>
+</ul>
+<p>Traditional methods for Content based:</p>
+<ul>
+<li>TF-IDF</li>
+<li>Classifiers </li>
+</ul>
+<p>Current recommender systems face a lot of issues except for scalability such as data scarcity and the cold star problem and all of them become even more noticeable in the context of OSN. Data scarcity is about limited number of preferences with user/item rating matrix being very sparse. On the other side, cold star problem pertains to the initial membership of a user where no data about their interests are available. Regarding the content relevance calculation, is usually inaccurate due to the short text posts and considering the relevance of a user preference is usually not provided in OSN by explicit features such as user-to-user scores. </p>
+<p>State of the art methods are:</p>
+<ol>
+<li>Context-aware Recommendations such as Tensor Factorization and factorization Machines</li>
+<li>Deep Learning </li>
+<li>Trust-based Recommendations</li>
+<li>Social-based Recommendations</li>
+</ol>
+<p>Social and trust-based Recommendation are methods found on community or otherwise called social recommender systems and are capable of dealing with the problem of data scarcity. Using as additional input data from online social networks (OSN) permits new forms of rating items (‘Like’), new forms of trustiness (‘an experienced friend from the social circle’) and provide user information both at individual and social level. At social level belong friendships relationships, user influence and number of common friends and can be used to calculate similarities between user profiles to identify users that have relevant interests. While user generated tags and link clicking belong to the individual level data. In few words, social recommender systems answer the following question “What is recommended for a user in relation to the network they belong”. Though, the assumption that the user and his/her friends have the similar tastes is not a reliable one. A matrix factorization method combined with social and trust data from OSN’s is proposed in the scientific paper ‘Recommender systems based on social networks’<a href="#2"><sup>2<sup></sup></sup></a>.  The authors cluster the similar users to calculate the similarity between users and the correlation between a user and an item. The purpose in clustering is to identify the most suitable friends for realistic recommendation tasks. In this way, the recommendations made with regard to two facts: (i) users having the same or similar tastes; and (ii) users having expertise in some field. </p>
+<p>However, collecting user interaction data to enhance recommendation accuracy is susceptible to many privacy issues.<br>Another restriction of recommender systems especially those related to user-based method is that they are susceptible to privacy attacks and the violation of sensitive information of users. Privacy-preserving collaborative filtering (PPCF) in social recommender systems is an interesting research direction since not only privacy is an essential aspect of social networks but also conventional PPCF techniques of computation-intensive cryptography or data perturbation techniques are not appropriate in real online services. Zhu et.al(2014)<a href="#3"><sup>3<sup></sup></sup></a> proposed an algorithm for neighbor based PPCF to protect neighbors and individuals’ ratings while Li et.al (2016) <a href="#4"><sup>4<sup></sup></sup></a> in presented an algorithm for item based PPCF to protect individual privacy during recommendation.</p>
+<div id="1"><br><a href="https://datajobs.com/data-science-repo/Recommender-Systems-%5BNetflix%5D.pdf" target="_blank" rel="external"><sup>1</sup> Y. Koren, R. Bell, and C. Volinsky. Matrix factorization techniques for recommender systems. IEEE<br>Computer, 42(8):30–37, 2009</a>.<br></div><br><div id="2"><br><a href="http://www.sciencedirect.com/science/article/pii/S0164121214002064" target="_blank" rel="external"><sup>2</sup> Z. Sun, L. Han, W. Huang, X. Wang, X. Zeng, M. Wang, and H. Yan, “Recommender systems based on social networks,” J. Syst. Softw., vol. 99, pp. 109–119, 2015.</a><br></div><br><div id="3"><br><a href="http://www.sciencedirect.com/science/article/pii/S0167739X13001647" target="_blank" rel="external"><sup>3</sup> T. Zhu, Y. Ren, W. Zhou, J. Rong, and P. Xiong. An effective privacy preserving algorithm<br>for neighborhood-based collaborative filtering. Future Generation Computer Systems,<br>36:142–155, 2014.</a><br></div><br><div id="4"><br><a href="http://www.sciencedirect.com/science/article/pii/S0167739X14002374" target="_blank" rel="external"><sup>4</sup> Li, C. Chen, Q. Lv, L. Shang, Y. Zhao, T. Lu, and N. Gu, “An algorithm for efficient privacy-preserving item-based collaborative filtering,” Futur. Gener. Comput. Syst., vol. 55, pp. 311–320, 2016.</a><br></div>
+
+<div style="display: flex; justify-content: center; width: 100%; color: #ffcccc"><br>Thank You for Reading &amp; Stay Present<br></div>
+
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                This blog is developed
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/anniec0d" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/annisap" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Anni Sap 2017</li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'annisap-github-io';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
