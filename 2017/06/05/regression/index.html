@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="This is a blog for everyone who finds passion in the science of data.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Annie Sap">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Regression Analysis"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mirror Into Data"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Regression Analysis - Mirror Into Data</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Mirror Into Data</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>Regression Analysis</h1>
+
+
+    <span class="image main"><img src="/images/regression.jpg" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p>What you should know to understand regression and when should you use it</p>
+<p>The minimum one should know to get a data scientist job is to have a solid background in statistics. Understanding exploratory data analysis, inferential statistics, imputation, probability and regression techniques can land someone to the market place for the beginning of a prominent data savvy journey. In this post, we dive into regression techniques from the perspective of machine learning and partly of statistics. What does this mean? Regarding predictive models like regression there is not a big difference between machine learning and statistical modelling and actually many algorithms and concepts used in data science belong both to statistics and machine learning. </p>
+<p><strong>In this post, you will read about</strong>:</p>
+<ul>
+<li>The general categories of machine learning algorithms</li>
+<li>The theory of regression analysis</li>
+<li>The difference between simple and multivariate regression</li>
+<li>Real-life applications of regression</li>
+<li>Supervised model representation </li>
+<li>The learning algorithm used to create a linear regression model.</li>
+<li>How to best prepare your data when modeling using linear regression.</li>
+<li>The difference between linear, polynomial and non-linear regression</li>
+<li>The main difference between linear and logistic regression</li>
+</ul>
+<ul>
+<li>How to categorize the different machine learning algorithms?</li>
+</ul>
+<p>Machine learning algorithms can be divided in three categories:<br>(i) regression,<br>(ii) classification and<br>(iii) clustering.<br>Clustering algorithms used to find groups (called clusters) to place a set of data objects in such a way that objects in the same cluster are more similar to each other than to those in other clusters. Classification algorithms used to classify data into different categories. Regression shows how the variation in the features we want to measure are calculated from a combination of the input features. Regression predicts its output variable as a continues variable like the temperature; whereas classification predicts the location of the input data into classes or otherwise called labels like into cat and dog classes. Clustering on the other hand firstly finds a pattern in data that will be the criterion for unknown clusters to be formed and then locate the data in these clusters. An example of clustering is the market segmentation.</p>
+<p>In clustering belong the following methods:</p>
+<ul>
+<li>k-means and k-medoids,</li>
+<li>hierarchical clustering,</li>
+<li>Gaussian mixture models,</li>
+<li>hidden Markov models, and</li>
+<li>expectation maximization.</li>
+</ul>
+<p>In classification belong:</p>
+<ul>
+<li>decision trees,</li>
+<li>Bayesian classifiers, </li>
+<li>support vector machines,</li>
+<li>ensemble learning and neural networks, </li>
+<li>Naïve Bayes, </li>
+<li>logistic regression, </li>
+<li>and k-nearest neighbour.</li>
+</ul>
+<p>In regression belong:</p>
+<ul>
+<li>linear regression, </li>
+<li>decision trees, </li>
+<li>support vector machines, </li>
+<li>ensemble learning and </li>
+<li>neural networks.</li>
+</ul>
+<p>What exactly does regression analysis?</p>
+<p>In essence, regression is a type of analysis that estimates the relationship between input and output numerical variables. In statistics these variables are called independent and dependent respectively and the level of dependence can be captured using “parameter estimates” also called “coefficients” or “Betas”. When the input variable is one, the method is referred to as simple regression whereas when we have many input variables then we call it either multivariate or multiple.</p>
+<p>Any applications of regression?</p>
+<p>A real-life example of regression in the field of precision agriculture is to find the impact of rainfall amount (input) on number fruits yielded (output). In the field of digital marketing, a typical example is to find the Return On Investment (ROI) of a marketing campaign where the amount of increased sales is the output and the features of the marketing investment like the median and the brand are the input. On both examples the relationship is reflected through a model representation. </p>
+<p>How to build a supervised model? </p>
+<p>A supervised model representation includes five components: training data, learning algorithm, hypothesis, input features and output features. Training data feeds the learning algorithm which estimates the values of the parameters and depending on these values a hypothesis is generated. This hypothesis takes new input data (not from the training set) and predicts the numerical output.</p>
+<p>A linear regression model</p>
+<p>As said in the introduction, parameters are those that define the level of accuracy of your model. Selecting the best possible values for the parameters is called model tuning. A popular and easy-to-use technique to calculate those parameters is with Gradient Descent optimization algorithm. Note that, gradient descents measure the change of the learning curve and the goal is to select the values of gradient descents that minimize model’s error. Model’s error in regression can be found through the mean square error cost function equation, as shown below:</p>
+<p align="center"> for i=1:m -&gt; J(θ) = 1/2*m(h <sub>θ</sub> (x<sup>i</sup>)-y<sup>i</sup>)<sup>2</sup> </p>
+
+<p>where</p>
+<blockquote>
+<p>m: the number of training examples<br>(x<sup>i</sup>),y<sup>i</sup>): is a training example in the index i.<br>h <sub>θ</sub> (x): is the hypothesis and equals to  h <sub>θ</sub> (x) = θ<sub>0</sub> + θ<sub>1</sub>x<br>x: the input features<br>y: the output features</p>
+</blockquote>
+<p>After that, the gradient descent can estimate the parameters in the hypothesis function, as indicated below:</p>
+<p></p><p align="center"> for i=1:m -&gt; θ<sub>0</sub> := θ<sub>0</sub>-a * 1/m(h <sub>θ</sub> (x<sup>i</sup>)-y<sup>i</sup>)</p><p></p>
+<p></p><p align="center"> for i=1:m -&gt; θ<sub>1</sub> := θ<sub>1</sub>-a <em> 1/m(h <sub>θ</sub> (x<sup>i</sup>)-y<sup>i</sup>)</em>x<sup>i</sup></p><p></p>
+<p></p><p align="center">θ<sub>0</sub> + θ<sub>1</sub> are simultaneously updated  repeatedly until to converge to the desired local minimum</p><br>where <p></p>
+<blockquote>
+<p>a is the rate of the learning curve, namely how big steps will make each θ in every iteration. It should not be too small because the algorithm will be &gt; slow but it should not be too large beacause it will fail to converge.</p>
+</blockquote>
+<p>What represent linear, polynomial and non-linear regression?</p>
+<p>When the relationship between the features and the predicted output seems to be linear then we use linear regression. The standard Linear Regression model has the following form:</p>
+<p></p><p align="center"> h <sub>θ</sub> (x) = θ<sub>0</sub> + θ<sub>1</sub>x </p><br>When the features of linear regression are polynomial we call it polynomial regression. In machine learning, polynomial regression is used to change the behaviour of the model to fit the nonlinear relationship of input and output features. An example of polynomial regression is to predict the progression of disease epidemics. Its model can be calculated by the squared roots, quatradic or cubic function.<p></p>
+<p>We can have non-linear features to describe nonlinear relationships and the regression problem to be non-linear as well. A model can have curves and be linear too. Thus, it is somehow complicated to differentiate a linear and non linear model. However, the central idea of linearity in regression problems is that a model is nonlinear when it’s parameters are not linear. Whereas if the learning algorithm is of the form ‘h <sub>θ</sub> (x) = θ<sub>0</sub> + θ<sub>1</sub>x’ it’s linear.</p>
+<p>Logistic versus Linear Regression?<br>Since there is usually a confusion between logistic and linear regression, it is important to mention here that logistic regression is a classification algorithm and both linear and logistic regression are linear prediction models. Decision trees and neural networks on the other hand are considered as non-linear.</p>
+<p>Bottom Line<br>Regression analysis outputs a continuous numeric variable which is dependent from the input features. Its simplest form is linear regression which assumes a linear relationship among features. To optimize the performance of the algorithm we select the best possible values of parameters via an optimization function like gradient descent and these values are the ones that minimize the cost function. In linear regression is commonly used the mean squared error  whereas in logistic regression the binary cross entropy. There are many applications of linear regression such as predicting temperature values, stock prices, ROI, and yield return. The next step is to program linear regression algorithm in Matlab, Octave, R or Python to analyze some data. Otherwise you can continue to logistic regression or other fundamental analysis techniques.</p>
+<div style="display: flex; justify-content: center; width: 100%; color: #ff8000"><br>Hope you enjoy reading &amp; stay enquiring.<br></div>
+
+
+
+
+
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                This blog is developed
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/anniec0d" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/annisap" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Anni Sap 2017</li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'annisap-github-io';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
