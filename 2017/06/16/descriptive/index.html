@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="This is a blog for everyone who finds passion in the science of data.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Annie Sap">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Descriptive Analysis"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mirror Into Data"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Descriptive Analysis - Mirror Into Data</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Mirror Into Data</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>Descriptive Analysis</h1>
+
+
+    <span class="image main"><img src="/images/nasa_summary.jpg" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p>Image by : <em> NASA </em> </p>
+<p align="center">Data Analysis Questions: Descriptive Statistics<br><em>Tell me the summary of what happened</em> </p>
+
+<p>Every data analysis process begins with a critical question and we expect the answer of it is going to give insight of how to solve a problem.<br>This is the most important step in a data analysis pipeline, asking the right question and find the dataset that will support this question.</p>
+<blockquote>
+<p>‘The saddest summary of a life contains 3 descriptions : could have, might have, should have’</p>
+</blockquote>
+<p>What we can learn from data can be categorized at five types of analysis questions:</p>
+<ol>
+<li>Descriptive</li>
+<li>Exploratory</li>
+<li>Referential</li>
+<li>Predictive</li>
+<li>Causal</li>
+</ol>
+<p>This is an article of a series of five articles. We will approach the question of ‘what happened’, which is a descriptive statistic question. We will do that from the perspective of explaining the most common functions used by data analysis tools like Octave, MatLab, Excel, R.</p>
+<p>In this post, you’ll read about:</p>
+<ol>
+<li>Descriptive Analysis</li>
+<li>Central Tendency: Mean, Median, Mode.</li>
+<li>Measure of Spread: Range, Variance, Standard Deviation, Skewness, Kurtosis</li>
+<li>Histogram</li>
+</ol>
+<p>What have in common the below questions?</p>
+<ul>
+<li>What are the most important factors that influence the career choices of Japanese students?</li>
+<li>Did users like the new cd of Ben Howard based on the number of tweets?</li>
+<li>How often do Greek university students use Facebook each week?</li>
+<li>What percent of the population voted against Brexit?</li>
+<li>How many users visited my site?</li>
+</ul>
+<p>Yes, you guess it right, they are all descriptive.</p>
+<p>What is the purpose of a descriptive question?</p>
+<p>The purpose is to find aspects of data like frequencies, central tendency or measure of spread. Descriptive statistics use numbers to summarize the essence of a data set. Let’s see an example more closely:</p>
+<p>The dataset:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a = 150 users on Monday, </div><div class="line">b = 100 users on Tuesday, </div><div class="line">c = 21 users on Wednesday,</div><div class="line">d = 21 users on Thursday, </div><div class="line">e = 50 users on Friday</div></pre></td></tr></table></figure></p>
+<p>Let’s say that each value represents the number of users that visit your website during the first five days that you lunch it.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">n = 5 which is the population, because we are using the entire set of possible values. </div><div class="line">Sample = 4 or 3 or 2 or 1, if we were not using the entire set of possible values.</div></pre></td></tr></table></figure></p>
+<p>Though, the example does not correspond to real-life problems. We commonly take random samples that are representative of the population.</p>
+<p>The most basic functions that used to calculate these numbers that describe our data set are:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Mean: 68.4</div><div class="line">Average of all values: a + b + c + d + e / n</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Median: 50</div><div class="line">The middle value in a sequence of values that are put in order regarding to size</div><div class="line">21, 21, 50, 100, 150.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Mode: 21</div><div class="line">The value that occurs most frequently within a set of values.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Maximum Value: 150</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Minimum Value: 21</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Range: 129 </div><div class="line">Maximum - Minimum Value</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Variance: = 2.497,84</div><div class="line"></div><div class="line">The average of the squared differences from the mean: 81.6^2 +31.6^ 2 + (-47.4)^ 2+ -(47.4)^2 + (-18.4)^2/5</div><div class="line">If we have a sample instead of population we would divide it by n-1.</div></pre></td></tr></table></figure>
+<p>The difference of <em>a</em> from the mean: 150 – 68.4 = 81.6<br>The difference of <em>b</em> from the mean: 100 – 68.4 = 31.6<br>The difference of <em>c,d</em> from the mean: 21 – 68.4 = -47.4<br>The difference of <em>e</em> from the mean: 50 – 68.4 = -18.4</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Standard Deviation: 49.9783</div><div class="line">The squared root of variance, measures how spread out the numbers are</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Skewness: 0.56981, Moderately skewed</div><div class="line">It measures the lack of symmetry of the data set’s probability distribution.</div><div class="line"> ((a-mean)^3 +  (b-mean)^3 +  (c-mean)^3 +  (d-mean)^3 + (e-mean)^3)) / standard deviation^3 * n</div></pre></td></tr></table></figure>
+<p>Skewness describes the long-tail of the distribution and it can be negative, positive, without skewness or undefined.</p>
+<p></p><p align="center"><img src="/images/Skewed.jpg" alt="Skewness"></p><br>Image by <em>Assetinsights.net</em><p></p>
+<p>A perfectly symmetrical data set will have a skewness of 0 &amp; the normal distribution has a skewness of 0.</p>
+<ul>
+<li>-0.5 &lt; skewness &lt; 0.5, the data are fairly symmetrical.</li>
+<li>-1 &lt; skewness &lt; – 0.5 or 0.5 &lt; skewness &lt; 1, the data are moderately skewed</li>
+<li>1 &lt; skewness or skewness &lt; -1, the data are highly skewed</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Kurtosis:  1.7805</div><div class="line">It measures the tallness and sharpness of the central peak.</div><div class="line"> ((a-mean)^4 +  (b-mean)^4 +  (c-mean)^4 +  (d-mean)^4 + (e-mean)^4)) / standard deviation^4 * n</div></pre></td></tr></table></figure>
+<p>Kurtosis sees whether the data are heavy-tailed or light-tailed relative to a normal distribution, namely measures the amount of probability in the tails. </p>
+<p>The value is often compared to the kurtosis of the normal distribution, which is equal to 3.<br>If the kurtosis &gt; 3, then the dataset has more probabilities in the tails (heavier tails than a normal distribution.<br>If the kurtosis &lt; 3, then the dataset has less probabilities in the tails (lighter tails than a normal distribution).  </p>
+<p>The histogram is an effective graphical technique for summarizing the shape, the distribution of a data set and showing both the skewness and kurtosis of data set.</p>
+<p>Why do we care about distribution?</p>
+<p>Many data analysis functions have as a prerequisite for data to follow a normal distribution or other. Otherwise, we can not take an accurate answer since the math behind some data analysis functions derived from an assumption of a normal distribution or other.</p>
+<p>There are also some other functions like percentile, moment, correlation coefficients, covariance, and confidence level percentage but in the favour of simplicity, let’s discuss them in another post.<br>When you sre using statistical tools, you don’t need to know exactly what the funtion is since you just heve to call the name of the function and you get the result. I computed the results for the example using Octave <a href="#1"><sup>1</sup></a>. </p>
+<div id="1"><br><a href="https://www.gnu.org/software/octave/doc/v4.0.3/Descriptive-Statistics.html" target="_blank" rel="external"><sup>1</sup> Descriptive Statistics in Octave</a><br></div>
+
+<div style="display: flex; justify-content: center; width: 100%; color: #304FFE"><br>Hope you know have a grasp of descriptive analysis &amp; Thank You for Reading<br></div>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                This blog is developed
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/anniec0d" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/annisap" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Anni Sap 2017</li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'annisap-github-io';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
