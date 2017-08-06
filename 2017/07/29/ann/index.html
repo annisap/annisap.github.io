@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="This is a blog for everyone who finds passion in the science of data.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Annie Sap">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Diving Into Neural Networks"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mirror Into Data"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Diving Into Neural Networks - Mirror Into Data</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Mirror Into Data</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>Diving Into Neural Networks</h1>
+
+
+    <span class="image main"><img src="/images/david-bruyndonckx.jpg" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p>Photo by: <em>David Bruyndonckx on Unsplash</em></p>
+<p><strong>Understanding Artificial Neural Networks without burning your Brain Neural Networks</strong></p>
+<blockquote>
+<p>‘If you don’t challenge your brain, nobody else will.’</p>
+</blockquote>
+<p><strong>BNN Learning</strong><br>When you think about training a machine to learn, what is more natural than to think of our brain as a complicated learning machine. Besides, the first work that is now generally recognized as AI (1943) drew knowledge of the basic physiology and function of neurons in the brain <a href="#1"><sup>1</sup></a>. Neural Networks are a major area of research in both neuroscience and computer science.<br>Before diving into how Artificial Neural Networks(ANN) learn, let’s explore something more familiar: how the brain learns.</p>
+<p>A biological neural network(BNN) is a collection of neurons (electrically excitable cells) connected together through synapses that processes and transmits information. A group of neurons forms a “distributed-database”<a href="#i"><sup>i</sup></a> of encoded information such as skills, thoughts and feelings and other long-term memories.</p>
+<p>Ok, but how the brain learns?<br>According to neuroplasticity<a href="#2"><sup>2</sup></a>, the brain can change in three very basic ways to support learning:<br>1.Chemical: transfer chemical signals between neurons. It support short-term memory.<br>2.Structural: altering/creating the connections between neurons. It supports long-term memory.<br>3.Functional: The more you use a brain region, the more excitable and easier is to use it again and again.</p>
+<blockquote>
+<p>“Behaviour drives changes in the physical structure of the brain which manifest as changes in our abilities.”</p>
+</blockquote>
+<p><strong> ANN &amp; BNN Learning Costs </strong><br>BNN learning is an expensive problem due to cost related with the information load, the very large doses of practise that are needed. Generally we humans unconciously decide to learn a new skill after evaluating the function of f(x) = y where we put the following variables as input<br>i. effort<br>ii.time<br>iii.cost against other choices to spend our time and/or efforts<br>towards the skill value, and take as output the learning decision.</p>
+<p>Now let’s make a connection between the known-old information(BNN) and unknown-new information by diving into an artificial feedforward<a href="#iii"><sup>iii</sup></a> neural network, named Cenia<a href="#ii"><sup>ii</sup></a>.<br>Cenia’s learning was earlier a really expensive problem due to the lack of data and the slow computers; now both of the sources are available.<br>The learning cost of a neural net is related to efficiency and accuracy. Efficiency cost is about the computational resources like the training time, the complexity of the model and the memory space needed for the model to run. Accuracy is related with how close to the truth is the prediction results. Usually measured via mean squarred error and the learning curve, known as ROC.</p>
+<blockquote>
+<p>“Every luxury has a cost, and everything is a luxury, starting with being in the world.” –Cesare Pavese</p>
+</blockquote>
+<p><strong> Problem Formulation: Classify Images </strong></p>
+<p>Let’s say the desired learning outcome of Cenia is to detect which photos contain a duck. This is a classification problem because the output variable is a discrete value and not a continuous one.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">y = &#123;0,1&#125;</div><div class="line">0: not a duck</div><div class="line">1: a duck</div></pre></td></tr></table></figure></p>
+<p>Let’s see how our brain process images before teaching Cenia to do that. One of the brain’s earliest visual processing centers, V1, identifies simple forms like vertical, horizontal, and diagonal edges of contrasting intensities, or lines. Downstream visual centers V2, V3, V4 weave together these basic visual forms to create the beginnings of a visual tapestry<a href="#3"><sup>3</sup></a>. The human brain does so in a fraction of a second and automatically organize information into a “whole” even as an individual’s gaze and attention are focused on only one part<a href="#4"><sup>4</sup></a>.</p>
+<blockquote>
+<p>“An image can be compared with a bag of thousands of little Lego blocks in chaotic order.”</p>
+</blockquote>
+<p><strong> ANN Learning </strong><br>Cenia’s learning achieved through three steps:</p>
+<ol>
+<li>Build the model</li>
+<li>Train the model</li>
+<li>Test the model</li>
+</ol>
+<p>Let’s decompose each step and then see the big picture. So,do not worry about concepts that you don’t grasp right now because later everything takes shape.</p>
+<p><strong> 1. Build the model: Architecture </strong></p>
+<p>In the building step, you have to decide about the training set, the data preparation and the model architecture.</p>
+<p align="center"><img src="/images/Duck.jpg" alt="Duck"></p><br>The <strong> training set </strong> is composed of training examples that you feed to the network to use as a true fact and base its learning. Here, it’ll be a matrix where each row is a training example and each column is a number which shows the pixel intensity at each location of the image. It has one more column ‘y’ which contains the real label for the image.<br>This can be compared to saying a baby ‘Hey little mind there, this one is a duck.’<br><br><p align="center"><img src="/images/matrix.jpg" alt="Matrix"></p><br><p align="center">The number of training examples are m and of features for each training example is n.<br>The columns of the matrix represent the nodes in the input layer.</p><br>Then you <strong> prepare the data </strong> so as to fit the model well. When we have categorical values we map them to an integer since the model doesn’t know how to fit on strings. Now that we have only two categorical values, we represent them with 0 and 1. Instead, if we had numerical values and actually a high range of them like 1000 and 0.01, we would apply feature scaling to minimize this very high spreading of the dataset on the dimensional space. Generally, some data normalization techniques are:<br>• Encoding Categorical Variables<br>• Feature Scaling<br>• Mean Normalization<br>• Missing values imputation<br>• Noise treatment<br><br>The critical part now is to decide the <strong> architecture </strong> of the neural network. A neural networlk will always have at least three layers, the input, the output and the hidden layer. Generally, the number of nodes in the input and output layers can be determined by the dimensionality of the problem. However, determining the number of hidden nodes is not straightforward.<br><p align="center"><img src="/images/architecture.jpg" alt="architecture"></p><br><p align="center">A sequence of integers describes the number of nodes in each layer. The network below is a 3-4-2.</p>
+
+
+<p><strong> Feedforard Function </strong><br>Each layer produces an output by applying a function to the output of the previous layer. In this way, each layer gets you farther and farther from the raw pixels and closer to your ultimate goal.<br>Each <strong> synapse </strong> of each layer firstly apply a linear transformation to the data in order to create weights (W) for each input (aka coefficient multipliers), as the following equation shows:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">z = W*X or f(x) = W*X (1)</div></pre></td></tr></table></figure></p>
+<p>After summing (1) for each input, each <strong> node </strong> of each layer applies a non-linear squashing function like sigmoid, known as activation function<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = f(z) or g(f(x)) = 1/(1+exp(-W*X)) (2)</div></pre></td></tr></table></figure></p>
+<p>So with one hidden layer, the above functions happen two times each, since we have two ‘blocks of synapses’. At the begging, each synapse is assigned with a random weight W.<br>To put it simply, the output is computed by multiplying the input (x) by the weight (w) and passing the result through some kind of activation function.</p>
+<p><strong> Input Layer → x: look for edges (Lego blocks) in the raw pixel data </strong><br>The input layer will always be equal to one. The number of neurons comprising that layer is equal to the number of features (columns) in your input data. So if each training example, namely each image is represented by 200 floating point numbers (pixels), then the nodes in the input layer will be 200. One additional node is added sometimes for a bias term. The “bias” nodes are disconnected nodes in the network. They are like intercept terms in regression, which you can further see <a href="https://annisap.github.io/2017/06/05/regression/" target="_blank" rel="external">here</a>. Bias indicate the direction of the activation function whereas weights indicate the steepness of the activation function.</p>
+<p><strong> Hidden Layer → f(x): compose edges (Lego blocks) for detection of the features you egineered (tapestry)</strong><br>For the large majority of problems, one hidden layer is sufficient. The more hidden layers are added to neural net, the harder is to be trained.<br>The hidden layer captures the significance of each input and transfer it to the output layer . The significance of each input depend on the weights values. Consider for instance:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">z = 5x</div><div class="line">z = 3x</div><div class="line">The first input is more significant than the second.</div></pre></td></tr></table></figure></p>
+<p>Cenia will tell you if there’s a duck in a picture, if you give her the right tools to give an order on the Lego blocks of the picture.<br>So besides the features (pixels) you explicitly have as part of the raw image, you should engineer the other features that you implicitly have for the specific problem learning. Our duck detector is made up of different physical features like leg detector (to help tell you it’s a bird) and a body detector (since the duck is shaped like a horizontal rectagular) and a bill detector (to tell you it’s too big to be a duck). These are the three elements of your hidden layer: the features you engineered to help you identify ducks. This is not the case for every problem since there is no magic formula for selecting the optimum number of hidden neurons. Sometimes the number of nodes of the hidden layer are computed by the mean of input and output nodes or through other thumb rules, as shown below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">h = number of hidden neurons</div><div class="line">i = number of input neurons.</div><div class="line">o =  number of output neurons.</div><div class="line">e = number of examples in training data set.</div><div class="line">αα = an arbitrary scaling factor usually 2-10.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">h = sqrt(i*o)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">h = e/(a*(i+o))</div></pre></td></tr></table></figure>
+<p><strong> Output Layer → g(f(x)): compose the edgineered features of the previous layer to get your final answer </strong><br>The output layer will always be equal to one. The number of neurons comprising that layer is equal to the number of outputs you expect. Here, we have two nodes since we have two labels (0,1). When leg, body and bill detectors from the previous layer turn on with the right patterns, the answer will be 1(a duck) otherwise will be 0.</p>
+<ul>
+<li>Cenia: ‘Was I correct?’</li>
+<li>We: ‘No’</li>
+<li>Cenia: ‘So I was not properly taught’</li>
+</ul>
+<p>Cenia’s answers are far away from the truth. She has not yet learned to recognize ducks because we haven’t trained yet.</p>
+<p>In this post, we are training Cenia.</p>
+<p><strong> 2. Train the model: Minimize the Cost </strong></p>
+<blockquote>
+<p>Training a network means minimizing the cost function; minimizing the cost means changing the weights W of our model.</p>
+</blockquote>
+<p>To improve Cenia’s answers we need to quantify how wrong she is. We’ll do that through the cost function. We compute the cost function for each input with different weight values until we will find the weight values that minimize the cost. The cost is the difference between the real value (from the training data) and the predicted output (from the feedforward method). Let’s assign at variable h the predicted output of the third layers’ activation funcion f(g(x)).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">J = 0.5 * sum ((y-h)^2) (3)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>‘Cost Function imitates our Conscious Function, providing that Conscious aims to understand reality as close to the truth as possible.’<br>We need to find the change rate of the cost function(dJ) so as to select the direction that goes downhill. This would save us time because it would prevent us from searching of weights values that increase the cost<a href="#iv"><sup>iv</sup></a>, namely going uphill.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dJ/dW : the change rate of J with respect to W</div></pre></td></tr></table></figure></p>
+<p>Change rate = Slope = Steep =  Derivative<a href="#v"><sup>v</sup></a> = Gradient Descents: Find the values of Weights that minimize J</p>
+</blockquote>
+<p>To estimate the values of W, we compute Gradient Descents for each weight. Gradient descents is about finding the change rate of J with respect to W and choosing the Weight that minimizes J. After summing up the gradients, we  decide the next step of the function dJ/dW. In the diagram below, the step is the star.</p>
+<p align="center"><img src="/images/JW.jpg" alt="JW"></p>
+
+
+
+<p><strong> Backpropagation Error → g(f(x))’ </strong></p>
+<p>Now that we have find the costs and the weights, we should transfer them back to the input layer to perform the forward function again with the found values. The weights that contribute more to the error, would have larger activations and would be changed more when we perform Gradient Descent.<br>This procedure ‘transfer the weights forward w.r.t. x - transfer the error backward w.r.t. y’ would iteratively runs until we find the optimum values for our weights. In this way, Cenia would be able to predict most of the pictures correctly.<br>The backpropagation error is called delta. After we compute the activation function (2) for a node of output layer, delta for this node would be equal to:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d3 = a - y       (4)</div><div class="line">dJ/dW2 = a * d3  (5)</div></pre></td></tr></table></figure></p>
+<p>where y is the real value of the output.<br>The error for the previous layer would be slightly different:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d2 = (W2*d3) * a&apos;  (6)</div><div class="line">dJ/dW1 = X * d2    (7)</div></pre></td></tr></table></figure></p>
+<p>where a would be the activation function of hidden layer and a’ would be its derivative. We have no d1 because the first layer corresponds to inputs.<br>In (5) actually, a would be a transpose, in (6) W would be W transpose and in (7) would be X transpose;since we are playing with matrices and we want to make matrix multiplication along the training examples. What is missing from this post is the linear algebra like matrix multiplication and transposes that are behind these functions. But to keep things simple and not to burn our brain neural nets we talked only about the notion of neural networks and not the maths behind it.<br>For everyone who would like to apply neural nets to code and also check the maths, can see <a href="https://github.com/stephencwelch/Neural-Networks-Demystified" target="_blank" rel="external">this repo</a> on github, and the corresponding videos.</p>
+<p>For everyone who would like to learn more about how our brain learns, can see <a href="https://www.youtube.com/watch?v=LNHBMFCzznE" target="_blank" rel="external">this ted video</a>.</p>
+<p>Notes:</p>
+<div id="i"><br><sup>i</sup> There is no central processing like CPU where all our memories stored. On the contrary memories are stored throughout many brain regions.<br></div><br><div id="ii"><br><sup>ii</sup> Cenia: Derived from the Greek xenia (hospitality), which is from xenos (a guest, stranger). Cenia is cousin with ENIAC,the first general-purpose computer<br></div><br><div id="iii"><br><sup>iii</sup> Data transferring happens in only one direction, from nodes in layer i to nodes in layer i + 1. Additionally, every node in layer i connects to every node in layer i + 1.<br></div><br><div id="iv"><br><sup>iv</sup> We can not calculate the cost function and select the weights and that’s all because of the curse of dimensionality.<br></div><br><div id="v"><br><sup>v</sup> Partial Derivatives because we are concering one weight at the time.<br></div>
+
+<p>Further Reading:</p>
+<div id="1"><br><a href="https://pdfs.semanticscholar.org/bef0/731f247a1d01c9e0ff52f2412007c143899d.pdf" target="_blank" rel="external"><sup>1</sup> Russell, Stuart, Peter Norvig, and Artificial Intelligence. “A modern approach.” Artificial Intelligence. Prentice-Hall, Egnlewood Cliffs 25 (1995): 27.</a><br></div><br><div id="2"><br><a href="http://www.neuroplasticityandeducation.com/wp-content/uploads/2015/10/lara-boyd.pdf" target="_blank" rel="external"><sup>2</sup> Lara Boyd,”Plasticity and the Brains of Children with Learning Disabilities”.Neuroplasticity and Education,October 2015.</a><br></div><br><div id="3"><br><a href="https://blogs.scientificamerican.com/mind-guest-blog/how-the-brain-processes-images/" target="_blank" rel="external"><sup>3</sup> Daniel Barron. “How the Brain Processes Images.” Scientific Americance, 10 May 2016.</a><br></div><br><div id="4"><br><a href="https://www.sciencedaily.com/releases/2005/08/050810130507.htm" target="_blank" rel="external"><sup>4</sup> Johns Hopkins University. “How The Brain Understands Pictures.” ScienceDaily. ScienceDaily, 10 August 2005.</a><br></div> 
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                This blog is developed
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/anniec0d" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/annisap" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Anni Sap 2017</li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'annisap-github-io';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
