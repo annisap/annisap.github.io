@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="This is a blog for everyone who finds passion in the science of data.">
+        <meta name="description" content="This is a notebook for everyone who finds passion in the science of data.">
     
 
     <!--Author-->
@@ -55,6 +55,17 @@
 
     <!-- Google Analytics -->
     
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-104677733-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
 
 
 </head>
@@ -132,7 +143,7 @@
 <p>“Behaviour drives changes in the physical structure of the brain which manifest as changes in our abilities.”</p>
 </blockquote>
 <p><strong> ANN &amp; BNN Learning Costs </strong><br>BNN learning is an expensive problem due to cost related with the information load, the very large doses of practise that are needed. Generally we humans unconciously decide to learn a new skill after evaluating the function of f(x) = y where we put the following variables as input<br>i. effort<br>ii.time<br>iii.cost against other choices to spend our time and/or efforts<br>towards the skill value, and take as output the learning decision.</p>
-<p>Now let’s make a connection between the known-old information(BNN) and unknown-new information by diving into an artificial feedforward<a href="#iii"><sup>iii</sup></a> neural network, named Cenia<a href="#ii"><sup>ii</sup></a>.<br>Cenia’s learning was earlier a really expensive problem due to the lack of data and the slow computers; now both of the sources are available.<br>The learning cost of a neural net is related to efficiency and accuracy. Efficiency cost is about the computational resources like the training time, the complexity of the model and the memory space needed for the model to run. Accuracy is related with how close to the truth is the prediction results. Usually measured via mean squarred error and the learning curve, known as ROC.</p>
+<p>Learning is best when you connect it to things that you’ve already learned. Now let’s make a connection between the known (BNN) and unknown information by diving into an artificial feedforward<a href="#iii"><sup>iii</sup></a> neural network, named Cenia<a href="#ii"><sup>ii</sup></a>.<br>Cenia’s learning was earlier a really expensive problem due to the lack of data and the slow computers; now both of the sources are available.<br>The learning cost of a neural net is related to efficiency and accuracy. Efficiency cost is about the computational resources like the training time, the complexity of the model and the memory space needed for the model to run. Accuracy is related with how close to the truth is the prediction results. Usually measured via mean squarred error and the learning curve, known as ROC.</p>
 <blockquote>
 <p>“Every luxury has a cost, and everything is a luxury, starting with being in the world.” –Cesare Pavese</p>
 </blockquote>
@@ -189,8 +200,7 @@
 <p><strong> Backpropagation Error → g(f(x))’ </strong></p>
 <p>Now that we have find the costs and the weights, we should transfer them back to the input layer to perform the forward function again with the found values. The weights that contribute more to the error, would have larger activations and would be changed more when we perform Gradient Descent.<br>This procedure ‘transfer the weights forward w.r.t. x - transfer the error backward w.r.t. y’ would iteratively runs until we find the optimum values for our weights. In this way, Cenia would be able to predict most of the pictures correctly.<br>The backpropagation error is called delta. After we compute the activation function (2) for a node of output layer, delta for this node would be equal to:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d3 = a - y       (4)</div><div class="line">dJ/dW2 = a * d3  (5)</div></pre></td></tr></table></figure></p>
 <p>where y is the real value of the output.<br>The error for the previous layer would be slightly different:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d2 = (W2*d3) * a&apos;  (6)</div><div class="line">dJ/dW1 = X * d2    (7)</div></pre></td></tr></table></figure></p>
-<p>where a would be the activation function of hidden layer and a’ would be its derivative. We have no d1 because the first layer corresponds to inputs.<br>In (5) actually, a would be a transpose, in (6) W would be W transpose and in (7) would be X transpose;since we are playing with matrices and we want to make matrix multiplication along the training examples. What is missing from this post is the linear algebra like matrix multiplication and transposes that are behind these functions. But to keep things simple and not to burn our brain neural nets we talked only about the notion of neural networks and not the maths behind it.<br>For everyone who would like to apply neural nets to code and also check the maths, can see <a href="https://github.com/stephencwelch/Neural-Networks-Demystified" target="_blank" rel="external">this repo</a> on github, and the corresponding videos.</p>
-<p>For everyone who would like to learn more about how our brain learns, can see <a href="https://www.youtube.com/watch?v=LNHBMFCzznE" target="_blank" rel="external">this ted video</a>.</p>
+<p>where a would be the activation function of hidden layer and a’ would be its derivative. We have no d1 because the first layer corresponds to inputs.<br>In (5) actually, a would be a transpose, in (6) W would be W transpose and in (7) would be X transpose;since we are playing with matrices and we want to make matrix multiplication along the training examples. What is missing from this post is the linear algebra like matrix multiplication and transposes that are behind these functions. But to keep things simple and not to burn our brain neural nets we talked only about the notion of neural networks and not the maths behind it.<br>For everyone who would like to apply neural nets to code and also check the maths, can see <a href="https://github.com/stephencwelch/Neural-Networks-Demystified" target="_blank" rel="external">this repo</a> on github, and the corresponding videos.<br>For everyone who would like to learn more on ann and computer vision, can see <a href="https://www.ted.com/talks/fei_fei_li_how_we_re_teaching_computers_to_understand_pictures" target="_blank" rel="external">this video</a><br>For everyone who would like to learn more about how our brain learns, can see <a href="https://www.youtube.com/watch?v=LNHBMFCzznE" target="_blank" rel="external">this ted video</a>.</p>
 <p>Notes:</p>
 <div id="i"><br><sup>i</sup> There is no central processing like CPU where all our memories stored. On the contrary memories are stored throughout many brain regions.<br></div><br><div id="ii"><br><sup>ii</sup> Cenia: Derived from the Greek xenia (hospitality), which is from xenos (a guest, stranger). Cenia is cousin with ENIAC,the first general-purpose computer<br></div><br><div id="iii"><br><sup>iii</sup> Data transferring happens in only one direction, from nodes in layer i to nodes in layer i + 1. Additionally, every node in layer i connects to every node in layer i + 1.<br></div><br><div id="iv"><br><sup>iv</sup> We can not calculate the cost function and select the weights and that’s all because of the curse of dimensionality.<br></div><br><div id="v"><br><sup>v</sup> Partial Derivatives because we are concering one weight at the time.<br></div>
 
@@ -211,7 +221,7 @@
 <div>
     
     <hr />
-    <h3>Kommentare:</h3>
+    <h3>Comments:</h3>
     <div id="disqus_thread">
         <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
@@ -231,7 +241,7 @@
         <section>
             <h2>About</h2>
             <div>
-                © 2017 Mirror Into Data by Annie Sap
+                Mirror Into Data
             </div>
         </section>
         <section>
