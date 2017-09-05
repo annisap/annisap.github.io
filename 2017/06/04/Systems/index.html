@@ -132,10 +132,17 @@
 
 <!-- Content -->
 <p>Image by <em>Black Mirror</em></p>
-<p>Recommendation plays an increasingly important role in our daily lives. LinkedIn, Netflix, and Amazon among others use recommender systems to find patterns of activities between different users and patterns of features between different items so as to produce recommendations to users. Not only giant companies, but almost every online business domain exploits recommendation systems’ magic in order to advocate the user’s searching experience. Knowledge in building machine learning algorithms to recommender systems is a skill often required for the data scientist. </p>
+<p>Recommendation plays an increasingly important role in our daily lives. LinkedIn, Netflix, and Amazon all use recommender systems to find patterns of activities between different users and patterns of features between different items so as to produce recommendations to users. Not only giant companies, but almost every online business domain exploits recommendation systems’ magic in order to advocate the user’s searching experience. Knowledge in building machine learning algorithms to recommender systems is a skill often required for the data scientist. </p>
 <p><strong>In this post, you’ll read about:</strong></p>
-<p>What is content-based and collaborative filtering?<br>Low rank matrix factorization algorithm<br>What are some traditional and novel methods for recommender systems?<br>What is data scarcity and cold star issue?<br>How social networks’ data are combined into recommender systems?<br>What is Privacy Preserving Collaborative Filtering?</p>
-<p>Recommendation algorithms exploit predictive analysis on a user-item matrix so as to find items that users have not come across/rate (implicitly or explicitly) but they may be interested to them. These items variables are called latent variables because they are inferred rather than observed.<br>Both users and items have attributes. The more you know about your users and items, the better results can be expected. Usually at first, while you know little about your users’ tastes and preferences, you might base recommendations on item attributes alone (content-based) although user attributes (collaborative filtering) offer more accurate insights.</p>
+<ul>
+<li>What is content-based recommendation and collaborative filtering?</li>
+<li>Low rank matrix factorization algorithm</li>
+<li>What are some traditional and novel methods for recommender systems?</li>
+<li>What is data scarcity and cold star issue? </li>
+<li>How social networks’ data are combined into recommender systems? </li>
+<li>What is Privacy Preserving Collaborative Filtering?</li>
+</ul>
+<p>Recommendation algorithms exploit predictive analysis on a user-item matrix so as to find items that users have not come across but they may be interested to them. These variables are called latent because they are inferred rather than observed.<br>Both users and items have attributes and the more you know about them, the better recommendations results can be expected. Usually at first, while you know little about your users’ tastes, you might base the recommendations on solely item attributes calculations (content-based approach). Though user attributes (collaborative filtering) offer more accurate insights.</p>
 <p>Existing recommender schemes can be divided into three categories based on the methods they are build, </p>
 <ul>
 <li>content-based,</li>
