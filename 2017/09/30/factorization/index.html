@@ -1,0 +1,296 @@
+
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <!-- Head tag -->
+            <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="This is a notebook for everyone who finds passion in the science of data.I hope you’ll enjoy reading it.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Annie Sap">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Matrix Factorization Collaborative Filtering"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mirror Into Data"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Matrix Factorization Collaborative Filtering - Mirror Into Data</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-104677733-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+                <body>
+                    <div id="wrapper">
+
+                        <!-- Menu -->
+                        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Mirror Into Data</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+                            <div id="main">
+                                <div class="inner">
+
+                                    <!-- Main Content -->
+                                    
+
+    <h1>Matrix Factorization Collaborative Filtering</h1>
+
+
+    <span class="image main"><img src="/images/choice.jpg" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p>Photo by: <em> Nathan Dumlao on Unsplash</em></p>
+<p><strong>Recommender systems</strong> is a specific type of information filtering technique that attempts  to predict information items that are likely of interest to the user. Collaborative Filtering(CF) is the most popular approach in recommender system research.</p>
+<p>How Collaborative Filtering works?<br><strong>Collaborative Filtering</strong> builds a model from user’s past behaviour (item based) as well as similar decisions made by other users(user based); then use that model for the prediction. It employs similarity measures either in a neighbourhood search space or in a latent space to extract this information from data. </p>
+<p><strong>Thinking CF in terms of Google ranking algorithm?</strong><br>The most significant difference between them is that the latter finds efficiently web pages in the world wide web whereas the first finds efficiently items like products or movies in a specific application context like Amazon and Netflix.<br>To put it straightforward, given a user query, the PageRank<a href="#i"><sup>i</sup></a> algorithm returns an order of web pages such that the one of the top is the one that a user will be more likely interested in. Google search results vary, even on the same device and using the same keyword phrase because of user’s personal search and click history factor.</p>
+<p><strong>Different CF working approaches?</strong><br>Similarly, CF exploits user’s history by using </p>
+<ul>
+<li><em>heuristic models</em> (based on Pearson/Cosine/Jacquard functions that compute pair-wise similarities)  <ul>
+<li>item-based neighbourhood: find item i that is similar to k items which users has bought/search for/click to.</li>
+<li>user-based neighbourhood: user A bought items 1,2,3 and user B bought items 1,2,4. User A will likely buy item 4.</li>
+</ul>
+</li>
+<li><em>factor models</em> (based on mathematical techniques that infer factors by minimising the reconstruction error based on observed data.)<ul>
+<li>matrix factorization: finds hidden similarity layer between the users and the items</li>
+</ul>
+</li>
+<li><em>hybrid models</em></li>
+</ul>
+<p align="center"><img src="/images/Pearson.jpg" alt="Pearson"></p><br><p align="center"> Pearson correlation computes similarity between users v and u</p>
+
+
+<p><strong>In this post, you’ll read about:</strong></p>
+<ul>
+<li>What is the intuition of Matrix Factorization?</li>
+<li>How it works?</li>
+</ul>
+<p><strong>Matrix Factorization</strong> is a learning algorithm belonging to latent factor models and has been used in many machine learning applications like training deep networks, modelling a knowledge base and recommender systems. It allows for:</p>
+<ol>
+<li>solving linear equations</li>
+<li>compressing data</li>
+<li>transforming data</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Matrix Factorization is now a popular baseline in recommendation algorithms </div><div class="line">since it outperforms other state-of-the-art collaborative filtering techniques.</div></pre></td></tr></table></figure>
+<p>Let’s go a step behind and remember our schooling years in math class.<br>Factorization means decomposing an entity into multiple entries - that can be typically ‘managed’ more easily. For example, 8 is the product of 4 and 2.</p>
+<p align="center"><img src="/images/Factor-tree-48.jpg" alt="Pearson"></p><br><p align="center"> Image Source: <em>Science ABC</em> </p><br>Extending this idea to matrix factorization, means decomposing a matrix into two or more matrices. This helps us to extract these latent factors in data structures to find the hidden similarity layer between the users, items and interest (rating).<br><br><strong>The intuition</strong> behind using matrix factorization is that it assumes that there are some latent features <em>(k)</em> specific to a domain that influence users’ interest. These latent features are much smaller than the number of users and the number of items <em>(k&lt;min(m,n))</em>.<br>They are learnt by minimising the reconstruction error based on observed data.<br><br><strong>Problem Definition</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Process:</div><div class="line">This problem is solved in two steps:</div><div class="line"></div><div class="line">1. decompose the rating matrix to model both users and items </div><div class="line">as coordinates in a low dimensional feature space</div><div class="line">i.e. each user and each item has a feature vector, and</div><div class="line"></div><div class="line">2. compose an approximation of the rating matrix by computing the inner product</div><div class="line"> of the corresponding user and item feature vectors, to predict the rating.</div><div class="line"></div><div class="line">Each rating represents the interest of a user to an item and </div><div class="line">both oserved and unknown ratings are modelled as step (2) indicates.</div></pre></td></tr></table></figure><br><br><p align="center"><img src="/images/2factorization.jpg" alt="Pearson"></p><br><p align="center">Factorizing the Rating Matrix (R) into the inner product of User (Θ) and Item (X) Matrices<br>Each rating of user θ<sub>j</sub> on item x<sub>i</sub> is modelled as the inner product of them:  <strong>r<sub>ji</sub> = θ<sub>j</sub> x<sub>i</sub><sup>T</sup></strong></p><br>The model introduces a new quantity, k which is <strong>the rank of factorization</strong> and serves as both θ’s and Χ’s dimensions. This means that every rating in R is affected by k effects.<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Given:</div><div class="line">m training examples =  [users, items, ratings]</div><div class="line">n features(number of columns of original rating matrix)</div><div class="line"></div><div class="line">Goal:</div><div class="line">Predict the ratings in the test data set by minimizing the cost function.</div></pre></td></tr></table></figure><br><br><p align="center"><img src="/images/training.jpg" alt="Pearson"></p><br><p align="center">A set of training and test examples represented as a sparse matrix</p>
+
+<p>So, assuming R is a matrix of users rating items, it is pretty straightforward to assume that each item is tied to one or more categories with some strength, each user likes/dislikes some item-categories with different strengths, and the rating that a user should have given an item depended on the similarity between their characteristics and this item’s characteristics.</p>
+<p><strong>Learning Algorithm</strong><br><em>Model Training:</em><br>Convert matrix factorization to an optimisation problem &amp; minimise cost function</p>
+<p><em>Optimization Objective:</em><br>In each step, we are solving a regularized least square problem:</p>
+<ol>
+<li>Fix<a href="#ii"><sup>ii</sup></a> the user feature vector, and solve for the item feature vector</li>
+<li>Following that, fix item feature vector mj, and solve for user feature vector. </li>
+<li>Simultaneously minimize the cost function J and update the values of user &amp; item feature vector using Gradient Descent<br>Repeat this process until convergence<a href="#iii"><sup>iii</sup></a></li>
+</ol>
+<p>The first term in the following cost function J, is the <strong>Mean Square Error</strong> (MSE); and the second term is the regularization term added to prevent overfitting.<br>The following function says: ‘For all the observed ratings(R<sup>ji</sup>!=NA) compute the difference between the original rating matrix R and its approximation(R - Θ<sup>T</sup> * X), then update the latent feature vectors of users and items.</p>
+<p align="center"><img src="/images/gradient.jpg" alt="Pearson"></p><br><p align="center">Simultaneous Minimization of Cost Function J and Gradient Update, <em>by Andrew NG</em></p>
+
+<p><strong>To monitor convergence</strong>, we plot J and number of iterations and make sure its decreasing. The learning rate α decides how fast the gradient will step forward. To choose an optimal value for a, we can </p>
+<ol>
+<li>try a number of different value ranges,</li>
+<li>plot J with the number of iterations</li>
+<li>choose the one that decreases J.<br>If gradient descent decreases quickly, α is efficient.</li>
+</ol>
+<p>Some final notes<br>Apart from trying to produce a minimal value of this cost function for a given k(effects) and  λ(regularization), it is essential to determine what are the optimal values for those parameters.<br><strong>Large values for λ</strong> results in high bias, namely data do not fit the model while small values for λ results in high variance, namely themodel fails to generalize as new data come. We can compute different values for λ and after plotting cost function, pick the one that decreases the cost function.<br>Another idea is to incorporate Cross Validation or another more sophisticated optimization process to ensure a good value selection for those parameters.<br><strong>Gradient descent works well in optimizing MF models</strong> only when the dimensionality of the original rating matrix is not high; as otherwise there would be many (n<em>k + m</em>k) parameters to optimize.<br>Bear in mind that introducing distributed computing could alleviate this problem.</p>
+<p>An alternative to simultaneous optimization, is to use Alternating Least Squares which 2-teration process. In ALS, we solve a linear regression problem with the difference we do not have fixed weights. To put it differently, we solve for x given θ, compute gradient x (step 1), then we solve for θ given x, compute gradient θ (step 2) and we iterate. ALS to converge slower.</p>
+<p>Another thing to keep in mind is that, imposed constrains shape the factorization and yield different views on data. Constrains are all the possible values variables may take.</p>
+<p>Concluding, there are many FM techniques in which PCA and SVD are considered as baseline. Non negative MF and Probabilistic MF are also well-known MF tachniques.</p>
+<div class="sa-notes-wrapper"><br><div id="i" class="sa-notes"><br><sup>i</sup> PageRank is part of Google’s overall search “algorithm” called Hummingbird.<br></div><br><div id="ii" class="sa-notes"><br><sup>ii</sup> Fix: Initiallize parameters with small random values<br></div><br><div id="iii" class="sa-notes"><br><sup>iii</sup> An iterative algorithm is said to converge when as the iterations proceed the output gets closer and closer to a specific value.<br></div><br></div>
+
+<div style="display: flex; justify-content: center; width: 100%; color: #795548"><br>Thank You for Reading &amp; Stay Motivated<br></div>
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                Mirror Into Data
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/anniec0d" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/annisap" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Anni Sap 2017</li>
+        </ul>
+    </div>
+</footer>
+                    </div>
+
+                    <!-- After footer scripts -->
+                    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'annisap-github-io';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+                </body>
+
+            </html>
+            
