@@ -175,7 +175,7 @@
 <li>Simultaneously minimize the cost function J and update the values of user &amp; item feature vector using Gradient Descent<br>Repeat this process until convergence<a href="#iii"><sup>iii</sup></a></li>
 </ol>
 <p>The first term in the following cost function J, is the <strong>Mean Square Error</strong> (MSE); and the second term is the regularization term added to prevent overfitting.<br>The following function says: ‘For all the observed ratings(R<sup>ji</sup>!=NA) compute the difference between the original rating matrix R and its approximation(R - Θ<sup>T</sup> * X), then update the latent feature vectors of users and items.</p>
-<p align="center"><img src="/images/gradient.jpg" alt="Pearson"></p><br><p align="center">Simultaneous Minimization of Cost Function J and Gradient Update, <em>by Andrew NG</em></p>
+<p align="center"><img src="/images/gradient.jpg" alt="Pearson"></p><br><p align="center">Simultaneous Minimization of Cost Function J and Gradient Update, <em>by Andrew NG</em> <a href="#iv"><sup>iv</sup></a></p>
 
 <p><strong>To monitor convergence</strong>, we plot J and number of iterations and make sure its decreasing. The learning rate α decides how fast the gradient will step forward. To choose an optimal value for a, we can </p>
 <ol>
@@ -187,7 +187,7 @@
 <p>An alternative to simultaneous optimization, is to use Alternating Least Squares which 2-teration process. In ALS, we solve a linear regression problem with the difference we do not have fixed weights. To put it differently, we solve for x given θ, compute gradient x (step 1), then we solve for θ given x, compute gradient θ (step 2) and we iterate. ALS to converge slower.</p>
 <p>Another thing to keep in mind is that, imposed constrains shape the factorization and yield different views on data. Constrains are all the possible values variables may take.</p>
 <p>Concluding, there are many FM techniques in which PCA and SVD are considered as baseline. Non negative MF and Probabilistic MF are also well-known MF tachniques.</p>
-<div class="sa-notes-wrapper"><br><div id="i" class="sa-notes"><br><sup>i</sup> PageRank is part of Google’s overall search “algorithm” called Hummingbird.<br></div><br><div id="ii" class="sa-notes"><br><sup>ii</sup> Fix: Initiallize parameters with small random values<br></div><br><div id="iii" class="sa-notes"><br><sup>iii</sup> An iterative algorithm is said to converge when as the iterations proceed the output gets closer and closer to a specific value.<br></div><br></div>
+<div class="sa-notes-wrapper"><br><div id="i" class="sa-notes"><br><sup>i</sup> PageRank is part of Google’s overall search “algorithm” called Hummingbird.<br></div><br><div id="ii" class="sa-notes"><br><sup>ii</sup> Fix: Initiallize parameters with small random values<br></div><br><div id="iii" class="sa-notes"><br><sup>iii</sup> An iterative algorithm is said to converge when as the iterations proceed the output gets closer and closer to a specific value.<br></div><br><div id="iv" class="sa-notes"><br><sup>iv</sup> Alert, there is a discrepancy: Andrew transposes θ whereas the figure on matrix factorization transposes X.<br></div><br></div>
 
 <div style="display: flex; justify-content: center; width: 100%; color: #795548"><br>Thank You for Reading &amp; Stay Motivated<br></div>
 
