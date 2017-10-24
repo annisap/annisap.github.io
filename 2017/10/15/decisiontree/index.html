@@ -1,0 +1,304 @@
+
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <!-- Head tag -->
+            <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="This is a notebook for everyone who finds passion in the science of data.I hope you’ll enjoy reading it.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Annie Sap">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Decision Trees in Python"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mirror Into Data"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Decision Trees in Python - Mirror Into Data</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-104677733-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+                <body>
+                    <div id="wrapper">
+
+                        <!-- Menu -->
+                        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Mirror Into Data</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+                            <div id="main">
+                                <div class="inner">
+
+                                    <!-- Main Content -->
+                                    
+
+    <h1>Decision Trees in Python</h1>
+
+
+    <span class="image main"><img src="/images/titanic.jpg" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p>Cover Photo By <em> Marcelo Silva on Unsplash</em><br>Content Photo By <em>The Sinking of the RMS Titanic, Nathan Walker</em></p>
+<h3 id="Prediction-of-Titanic-Survivals-with-Decision-Tree-in-Python"><a href="#Prediction-of-Titanic-Survivals-with-Decision-Tree-in-Python" class="headerlink" title="Prediction of Titanic Survivals with Decision Tree in Python"></a>Prediction of Titanic Survivals with Decision Tree in Python</h3><blockquote>
+<p>All models are wrong, but some are useful.</p>
+</blockquote>
+<p>Did titanic survivals occur by chance? Or did they apply to the well known “survival of the fittest”? And what could be the meaning of this in a ship sank?<br>The goal of this project is to spot the patterns of features that led to survival. We learn these patterns on test data given the ten predictors described below; then we predict survival on test data and conclude with the evaluation of our model. Details for the code implementation can be found at the comments while the whole setting is described in the README file. The code is available in Python <a href="https://github.com/annisap/titanic/blob/master/TitanicPrediction.ipynb" target="_blank" rel="external">here</a></p>
+<p>The project was a good learning exercise for me, and hopefully, is a good reference for you. While coding, many questions emerged to my mind regarding predictive modelling and learning algorithm selections. So, I have to pause and find out why this is a better design solution than the other one. In this note, I am trying to answer these questions and I figured out how decisions are taken by decision trees.</p>
+<p><strong>Asking the Right Question:</strong><br>“Use the Machine Learning Workflow to process and transform the titanic dataset to create a prediction model. This model must predict which passengers are likely to survive from the titanic sank with 90% or greater accuracy.”</p>
+<p><strong>Data description</strong>(0:Output/Variable of interest, 1-10:Predictors/features):</p>
+<ol>
+<li>Survival - Survival (0 = No; 1 = Yes). Not included in test.</li>
+<li>Pclass - Passenger Class (1 = 1st; 2 = 2nd; 3 = 3rd)</li>
+<li>Name - Name</li>
+<li>Sex - Sex</li>
+<li>Age - Age</li>
+<li>Sibsp - Number of Siblings/Spouses Aboard</li>
+<li>Parch - Number of Parents/Children Aboard</li>
+<li>Ticket - Ticket Number</li>
+<li>Fare - Passenger Fare</li>
+<li>Cabin - Cabin</li>
+<li>Embarked - Port of Embarkation (C = Cherbourg; Q = Queenstown; S = Southampton)</li>
+</ol>
+<p><strong>Selecting the proper algorithm and model</strong></p>
+<p>Model selection depends on the type of data we are analyzing and this process becomes more difficult as the data becomes more complex in terms of size and dimensions.</p>
+<p><em>Why do we choose the Decision tree model?</em></p>
+<ol>
+<li>It works well on supervised classification problems(i.e. survived or not survived)</li>
+<li>Our variable of interest is categorical. Feature values are preferred to be categorical but even if they are continuous, discretization is applied prior to building the model.</li>
+<li>It is interpretable which allows us to spot the patterns of features that led to survival. If the analysis purpose is located only to the prediction output and not why/how this ouput is produced, then ‘black-box’ models like artificial networks can also work as classifiers.</li>
+<li>It requires little data preparation.</li>
+<li>Time efficiency: follows the logarithmic cost model, which assigns a cost to every operation proportional to the number of data points used to train the tree.</li>
+<li>It is possible to validate the model using statistical tests to check its reliability.</li>
+</ol>
+<p><em>Reasons for not choosing it?</em></p>
+<ol>
+<li>Prone to overfitting as the growth of decision tree is increasing. Solutions to this could be implementing random forests (many decision tree models), pruning (removes parts of the tree that have little power on classification), or select the minimum number of samples required at a leaf node and the maximum depth of the tree. In our example, we follow the first and the latter approach.</li>
+<li>Small variations in the data might result in a completely different tree being generated. Solution: implement a random forest or other ensemble learning.</li>
+<li>It needs a balanced dataset (not dominated labels) to prevent biased trees. Hence, we have to include almost equal number of ‘survived’ and ‘not survived’ examples.</li>
+<li>It is an NP-complete problem, like sudoku, sparse approximation, vehicle routing problem and graph coloring. Although, the solutions to that problems can be evaluated quickly (in polynomial time), they can not be found fast at the first place. </li>
+</ol>
+<p style="color:#9E9E9E;"><b>You can imagine our brains’ slow and fast thinking systems capable of solving NP-complete and P classes of problems, respectively.</b></p>
+
+<blockquote>
+<p>Concretely, decision trees are based on heuristic algorithms such as the greedy algorithm where locally optimal decision are made at each node and thus <strong>cannot guarantee to return the globally optimal</strong> decision tree. This can be mitigated by training multiple trees in an ensemble learner, where the features and samples are randomly sampled with replacement. - Scikit-learn</p>
+</blockquote>
+<p><strong>Could we use logistic regression instead of a decision tree?</strong><br>Absolutely. No algorithm can be determined as ‘better’ than another because their performance totally depends on the dataset and the specific problem you have at hand. From a practical view, you could implement both, use cross validation, plot the ROC and select the one with the higher efficiency. Though, each model has different data representation.  This means that the benchmarking against models is not equivalent to inferring uncertainty under situation with new data.<br><em>Critical Qusetions on the model:</em><br><strong>Decision boundary</strong>: Linear (logistic regression) or non-linear(decision tree) . The former draws lines, planes or hyperplanes to classify all the data points in your feature space whereas the latter draws locally linear segments, but these segments have a complex shape, non equivalent to 2D. The below image depicts four non-linear decision boundaries.<br><strong>Bias-Variance</strong> Trade-off (decision trees are more prone to overfitting)<br><strong>Large problem complexity</strong> or big amount of outliers or big data sets (non-parametric methods are preferred)<br><strong>Depedency on features</strong>(better to go with the decision tree)</p>
+<p align="center"><img src="/images/decisionboundary.jpg" alt="MapReduce"><br>Image By: Data Scientist TJO in Tokyo</p>
+
+<p><strong>Model:</strong><br>The decision tree is a supervised <em>nonparametric learning method</em>. </p>
+<blockquote>
+<p> Imagine a decision tree like a game of answering ‘if-then’ questions (forks) which define the recursively distribution of data examples under features values. The internal node in each fork asks a feature value; and the branch gives the corresponding value for each example. That value between the branches is called a split point;namely, data to the left of that point are get categorized in a different way than that of the right. The final nodes at the bottom of the decision tree are known as terminal nodes or leaf nodes and they vote on how to classify for new data. Each leaf node corresponds to the final output.</p>
+</blockquote>
+<p align="center"><img src="/images/titanic_tree.jpg" alt="MapReduce"><br>A visualization of a decision tree on titanic data, by Algobeans.com</p><p><br><strong>Algorithm:</strong><br>Scikit-learn and R implement an optimised version of the CART algorithm.<br>Other algorithms include C4.5, ID3, CHi-squared Automatic Interaction Detector and Conditional Inference Trees.<br>Pseudocode:<br><br>1. Start with all the data at the root node.<br>2. Split the training set into subsets, such that the examples with the same output value are grouped together.<br>3. Scan all the features for the best one to split on.<br>4. Once found, place it at the root node.<br>5. Do the split and move downwards.<br></p><p style="color:#9E9E9E;">Repeat step 4 and step 5 until the maximum allowable tree depth is reached where we let the leaf nodes to predict the outcome.</p><br>Split means, placing the data into left and right subsets in such a way that examples with the same feature value are groupped together. The split of categorical values is done via Gini, Information Gain, Chi-square, and entropy.<br><br><strong>Feature Selection</strong><br>When interpreting a model, the first question usually is: what are those important features and how do they contributing in predicting the target response? In linear regression this is equivalent of asking which explanatory variables (x) are significant predictors of the dependent variable(y), and how do they impact the latter.<br>Features that do not contribute to the model’s predictions have to be removed. This helps us to improve the prediction accuracy and to avoid model overfitting and slow training times. In addition to that, we acquire a better understanding of the underlying process that generated the data. Domain experts usually try to find ways for the the model to account for the variability in the changes in the outcome, to ensure generalization.<br><em>Methods:</em><br>1. <strong>Univariate</strong> or Filter methods assign scores to the features by looking only at the intrinsic properties of the data. They are scalable and efficient provided that they are computed only once, and then different classifiers can be evaluated.<br>2. <strong>Wrapper</strong> methods assess the relevance of a set of features instead of individual features. Different features combinations are compared to other combinations; then based on model accuracy, they assign a score on each combination. It is slower than the filter approach, and becomes even more computationally expensive when there are different models to be implemented.<br>3. <strong>Embedded</strong> approaches are far less computationally intensive than wrapper methods, since they learn which features best contribute to the accuracy of the model while the model is being created. These techniques introduce additional constraints into the optimization of a predictive algorithm to bias the model toward lower complexity with fewer coefficients<a href="#1"><sup>1<sup></sup></sup></a>.<br>4. Principal Component Analysis is a  dimensionality reduction technique that uses linear algebra to transform the dataset into a compressed form. We have to perform it beforehand to give our tree a better chance of finding the important features.<br><p align="center"><img src="/images/FeatureSelection.jpg" alt="MapReduce"><br>Feature Selection Methods: What techniques usually used by them, do they take into account the potential depedencies among different features and/or their depedence to the algorithm</p>
+
+<p>Individual decision trees intrinsically perform feature selection by selecting appropriate split points. The basic idea is: the more often a feature is used in the split points of a tree the more important that feature is<a href="#2"><sup>2<sup></sup></sup></a>.<br>In our example,the most important feature stands out for Sex, as we can figure out with <code>features_importances</code>. Usually, we compute feature importances (where all features scores add to 1) and we remove low-scoring features.</p>
+<p><strong> Novel application of decision trees</strong></p>
+<p>Novel applications of decision trees can be found in image mining like tumor detection and classification in MRI scans and learning human pose recognition in single input depth images.<br>In the latter, the decision tree takes a pixel and classifies the color of it it w.r.t. to the different parts of the body<a href="#3"><sup>3<sup></sup></sup></a>. The questions it asks are not the same for every pixel and the possible answers are exponential. This results in a less interpetable model since the people behind it are able to just get a sense of what the algorithm is doing intead of knowing exactly how the desicions are taken.<br>The emphasis of the researchers’ work is not put in the algorithm programming per se but in designing the training set in such a way to capture all the kind of variations.</p>
+<p>Following, there are the algorithm’s steps:</p>
+<ol>
+<li>A single input depth image is segmented into a dense probabilistic body part labeling(training data),</li>
+<li>Reproject the inferred parts into world space,</li>
+<li>Localize spatial modes of each part distribution,</li>
+<li>Generate (possibly several) confidence-weighted proposals for the 3D locations of each skeletal joint.<br><p align="center"><img src="/images/poses.jpg" alt="MapReduce"></p></li>
+</ol>
+<p>The awesome documentary <a href="https://www.youtube.com/watch?v=wkmWtxtrMRk" target="_blank" rel="external">‘The Secret Rules of Modern Living Algorithms’</a>, a very helpful <a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/" target="_blank" rel="external">visual introduction on desicion trees</a> and the references I have listed below, insired me a lot to take these notes.</p>
+<div id="1"><br><a href="https://pdfs.semanticscholar.org/84cd/15df3a6728e2e6fae745b1a534b3592cc7bd.pdf" target="_blank" rel="external"><sup>1</sup>Beniwal, S. and Arora, J. Classification and feature selection techniques in data mining. International Journal of Engineering Research &amp; Technology. 2012; 1: 2278–2284</a>.<br></div><br><div id="2"><br><a href="http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=663B8E52497345A233EDFFE2F2B322D9?doi=10.1.1.709.5208&amp;rep=rep1&amp;type=pdf" target="_blank" rel="external"><sup>2</sup>J. Shotton et al., ‘Real-Time Human Pose Recognition in Parts from a Single Depth Image,‘ Proc. IEEE Conf. Computer Vision and Pattern Recognition (CVPR), IEEE CS Press, 2011, pp. 12971304.</a>.<br></div><br><div id="3"><br><a href="ftp://197.155.77.5/sourceforge/s/project/sc/scikit-learn/documentation/scikit-learn-docs.pdf" target="_blank" rel="external"><sup>3</sup>Scikit-learn user guide</a><br></div><br><div style="display: flex; justify-content: center; width: 100%; color: #009688"><br>Thank You for Reading &amp; Never stop Questioning<br></div>
+
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                Mirror Into Data
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/anniec0d" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/annisap" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Anni Sap 2017</li>
+        </ul>
+    </div>
+</footer>
+                    </div>
+
+                    <!-- After footer scripts -->
+                    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'annisap-github-io';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+                </body>
+
+            </html>
+            

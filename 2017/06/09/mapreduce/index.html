@@ -1,0 +1,276 @@
+
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <!-- Head tag -->
+            <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="This is a notebook for everyone who finds passion in the science of data.I hope you’ll enjoy reading it.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Annie Sap">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Parallel Computing on Big Data"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mirror Into Data"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Parallel Computing on Big Data - Mirror Into Data</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-104677733-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+                <body>
+                    <div id="wrapper">
+
+                        <!-- Menu -->
+                        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Mirror Into Data</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+                            <div id="main">
+                                <div class="inner">
+
+                                    <!-- Main Content -->
+                                    
+
+    <h1>Parallel Computing on Big Data</h1>
+
+
+    <span class="image main"><img src="/images/joshua-sortino.jpg" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p>Image by <em> Joshual Sortino </em></p>
+<p>With the advent of Big Data, the interest towards distributing and parallel computing from both academia and industry has grown even more. These concepts come handy to people that develop algorithms on large-scale data or use cloud architecture for computationally intensive problems. For everyone who participate in a project development team, it would be helpful to know the fundamental of these computing paradigms in order to understand both the efforts and strengths that characterize a scalable product. I am not saying that distributed architectures are the bless holy for every project, on the contrary there are problems where distributed architectures are not required at all. </p>
+<p>In this post, you’ll read about:</p>
+<p>What is scalability in big data?<br>What are some applications that need parallelism?<br>What is parallel machine learning?<br>What is the difference between distributed and parallel computing?<br>Why MPI is inefficient towards big data problems?<br>What is the value of Map Reduce framework?<br>How Map Reduce works?<br>What is the trade-off between communication &amp; computation cost?</p>
+<p>To address the scalability issue and accelerate tasks in Big Data problems, data processing and analysis must be carried out by parallel and distributed programming models.</p>
+<p>But what does scalability means anyway? </p>
+<p>Scalable is considered an algorithm, a design, a networking protocol, a program, or other system that fulfills the following criterion:<br>it is able to still have high performance in case when one ‘large’ thing from the below happens:</p>
+<ol>
+<li>input a large dataset of data points or attributes to the system</li>
+<li>output a large dataset of data points or attributes from the system</li>
+<li>connect to the application a large number of users/a large number of compute nodes </li>
+<li>a large number or parameters required for the method to be build</li>
+</ol>
+<p>Two examples that require parallelism are <a href="#1"><sup>1</sup></a>:<br>i. The ranking of Web pages by importance, which involves an iterated matrix-vector multiplication where the dimension is many billions.<br>ii. Searches in “friends” networks at social-networking sites, which involve graphs with hundreds of millions of nodes and many billions of edges.</p>
+<p>Examples of methods that often take the advantage of parallelism and distribution include document clustering, web log analysis, machine learning and pattern-based searching and sorting. </p>
+<p> To make things more concrete, let me show you a simple example of a parallel machine learning algorithm. We have 180.000.000 training examples that we want to use in order to train a logistic regression classifier. But such data cannot run on one conventional computer. What do we do? Let’s say we are so lucky that we have in our house the new iMacPro which has 18-core processors. We divide the training set equally in so many chunks as the processors we have. Thus each chunk now has 10.000.000 training examples which are fed into each of these cores. Each one simultaneously runs the algorithm and give their answer asynchronously when they end up the calculations. Then, we take each result and combine them to finish our training. In this way, we achieve a speed up of almost 18x. This is called parallel machine learning because the computations run in a single machine in the form of mutli-core processors.</p>
+<p>On distributed computing, we follow the same procedure with the difference that these data training chunks are fed across on multiple computing machines instead on multiple cores at the same machine. Even if you with your team desire to develop the most sophisticated deep learning system you can now make use of NVIDIA DGX-1 whose GPU architecture is designed for AI. Mind that, the advantage of multicores against multiple machines is that we do not have to worry about network issues such as network latency.</p>
+<p>MPI was until recently the common parallel programming model for data analysis. But challenges such as big data access (since they are often stored in different locations), non-robust fault-tolerant mechanism (since big data jobs are time-consuming) and the need for an extremely large main memory to hold all the preloaded data for the computation (e.g. in a data mining problem all the data have to be available at the memory from the start) made it inefficient <a href="#2"><sup>2</sup></a>. These issues are partially been overcame through Map Reduce invention.</p>
+<p>Hadoop, Map Reduce and NoSQL are the major technologies in big data management. Map Reduce has become a dominant parallel computing paradigm for big data processing. But why? What we achieve by using it?<br>It achieves fast computation and automatically parallelization of colossal datasets processing via using hundreds or even thousands of commodity machines (aka a distributed system). A MapReduce algorithm instructs these machines to perform a computational task collaboratively. It can be used on multi-core system architectures or dynamic cloud environments as well.</p>
+<p>How Map Reduce works?</p>
+<p>Initially, the input dataset, which is treated as a collection of elements (e.g. documents, tuples etc), is splited into key-value pairs (chunks) to allow composition of several MapReduce processes. Note that, the keys are not relevant and we shall tend to ignore them. After the distribution of chunks to machines, map reduce algorithm executes four phases on rounds or otherwise called jobs:<br>i.   map-mappers: each machine prepares the information to be delivered to other machines<br>ii.  shuffle: takes care of the actual data transfer from mappers to reducers.<br>iii. sort: tell to reducer when to start a new reduce task. A reducer task starts when the next key in the sorted input data is different than the previous.<br>iv.  reduce- reducers: receives a list of a key and its list of associated values. The outputs from all the reduce tasks are merged into a single file.</p>
+<p>The first two phases enable the machines to exchange data. Shuffling can start even before the map phase has finished, to save time for mapping. Sorting on the other hand saves time for the reducer. No network communication occurs in the reduce phase, where each machine performs calculation from its local storage. The current round/job finishes after the reduce phase.<br>The below graph, made by Xiaochong Zhang, shows the execution of MapReduce process on word counting. Mind that, at the illustration, the phase of sorting, which is not depicted, is in the same column of shuffling.</p>
+<p align="center"><img src="/images/mapreduce.jpg" alt="MapReduce"></p>
+
+<p>Ideally, a MapReduce system should achieve a high degree of load balancing among the participating machines, and minimize the space usage, CPU and I/O time, and network transfer at each machine. However, again when designing map reduce algorithms there are concerns about communication cost. The decision one has to make when using map reduce is to choose  the trade-off between computation and communication cost. The communication cost and computation cost can be measured as <a href="#2"><sup>2</sup></a> </p>
+<div style="display: flex; justify-content: center; width: 100%"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Communication cost = total I/O of all processes.</div><div class="line">Elapsed communication cost = max of I/O along any path</div><div class="line">Elapsed computation costs analogous, but count only running time of processes.</div></pre></td></tr></table></figure><br><br></div>
+
+<p>To refine the explanation, say that </p>
+<div style="display: flex; justify-content: center; width: 100%"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">the communication cost is the sum of </div><div class="line">input file size + </div><div class="line">2 × (sum of the sizes of all files passed from Map processes to Reduce processes) + </div><div class="line">the sum of the output sizes of the Reduce processes</div></pre></td></tr></table></figure><br><br></div>
+
+<p>whereas </p>
+<div style="display: flex; justify-content: center; width: 100%"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">the elapsed communication cost is the sum of </div><div class="line">the largest input output for any map process,plus the same for any reduce process.</div></pre></td></tr></table></figure><br><br></div>
+
+<p>In bottom line, parallel execution of processing is essential for big data problems because scalability and time are two crucial and highly related issues, since we are talking about analysis of terabytes data sizes. Map Reduce is the dominant distributed framework used to process big data. For diving deeper into these concepts I recommend checking the informative two sources listed below. Additionally, for those who want to become ‘distributed-geeks’, I myself inveted this magnificent term 😯 , a collection of books, papers, cources etc are made by <a href="https://github.com/theanalyst/awesome-distributed-systems" target="_blank" rel="external">Abhishek L</a></p>
+<div id="1"><br><a href="http://infolab.stanford.edu/~ullman/mmds/book.pdf" target="_blank" rel="external"><sup>1</sup> A. Rajaraman and J. Ullman, Mining of Massive Datasets, Cambridge<br>University Press, 2011</a><br></div>
+
+<div id="2"><br><a href="http://onlinelibrary.wiley.com/doi/10.1002/widm.1134/abstract" target="_blank" rel="external"><sup>2</sup> A. Fernandez, S. del Rio, V. Lopez, A. Bawakid, M.J. del Jesus, J.M. Benitez, F.<br>Herrera, Big data with cloud computing: an insight on the computing environment, MapReduce and programming frameworks, Wiley Interdiscipl. Rev.: Data Min. Knowl. Discov. 4 (5) (2014) 380–409.</a>.<br></div>
+
+<div style="display: flex; justify-content: center; width: 100%; color: #FFD740"><br>Thank You for Reading &amp; Embrace the Universe You Have Inside You<br></div>
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                Mirror Into Data
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/anniec0d" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/annisap" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Anni Sap 2017</li>
+        </ul>
+    </div>
+</footer>
+                    </div>
+
+                    <!-- After footer scripts -->
+                    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'annisap-github-io';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+                </body>
+
+            </html>
+            
