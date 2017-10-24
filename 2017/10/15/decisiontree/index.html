@@ -167,9 +167,9 @@
 </ol>
 <p><em>Reasons for not choosing it?</em></p>
 <ol>
-<li>Prone to overfitting, as the growth of decision tree (the rules set) is increasing. Solutions to this could be implementing random forests (many decision trees), pruning (removes weak on classification parts of the tree), or decide the minimum number of samples required at a leaf node and the maximum depth of the tree. In our example, we follow the first and the latter approach.</li>
-<li>Small variations in the data might result in a completely different tree being generated. Solution: implement a random forest or other ensemble learning to cross chack the valid tree.</li>
-<li>It needs a balanced dataset (not dominated labels) to prevent biased trees. Hence, we have to include almost equal number of ‘survived’ and ‘not survived’ examples.</li>
+<li>Prone to overfitting, as the growth of decision tree (the rules set) is increasing. Solutions to this could be implementing random forests (many decision trees), pruning removes parts of the tree, some rules set weak on classification), or decide the minimum number of samples required at a leaf node and the maximum depth of the tree. In our example, we follow the first and the latter approach.</li>
+<li>Small variations in the data might result in a completely different tree being generated. Solution: implement a random forest or other ensemble learning to decide the validate tree.</li>
+<li>It needs a balanced dataset (not dominated ouputs) to prevent biased trees. Hence, we have to include almost equal number of ‘survived’ and ‘not survived’ examples.</li>
 <li>It is an NP-complete problem, like sudoku, sparse approximation, vehicle routing problem and graph coloring. Although, the solutions to that problems can be evaluated quickly (in polynomial time), they can not be found fast at the first place. </li>
 </ol>
 <p style="color:#9E9E9E;"><b>You can imagine our brains’ slow and fast thinking systems capable of solving NP-complete and P classes of problems, respectively.</b></p>
