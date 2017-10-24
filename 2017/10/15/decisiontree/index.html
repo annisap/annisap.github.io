@@ -167,7 +167,7 @@
 </ol>
 <p><em>Reasons for not choosing it?</em></p>
 <ol>
-<li>Prone to overfitting, as the growth of decision tree is increasing. Solutions to this could be implementing random forests (many decision tree models), pruning (removes weak on classification parts of the tree), or decide the minimum number of samples required at a leaf node and the maximum depth of the tree. In our example, we follow the first and the latter approach.</li>
+<li>Prone to overfitting, as the growth of decision tree (the rules set) is increasing. Solutions to this could be implementing random forests (many decision trees), pruning (removes weak on classification parts of the tree), or decide the minimum number of samples required at a leaf node and the maximum depth of the tree. In our example, we follow the first and the latter approach.</li>
 <li>Small variations in the data might result in a completely different tree being generated. Solution: implement a random forest or other ensemble learning to cross chack the valid tree.</li>
 <li>It needs a balanced dataset (not dominated labels) to prevent biased trees. Hence, we have to include almost equal number of ‘survived’ and ‘not survived’ examples.</li>
 <li>It is an NP-complete problem, like sudoku, sparse approximation, vehicle routing problem and graph coloring. Although, the solutions to that problems can be evaluated quickly (in polynomial time), they can not be found fast at the first place. </li>
