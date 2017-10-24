@@ -160,15 +160,15 @@
 <ol>
 <li>It works well on supervised classification problems(i.e. survived or not survived)</li>
 <li>Our variable of interest is categorical. Feature values are preferred to be categorical but even if they are continuous, discretization is applied prior to building the model.</li>
-<li>It is interpretable which allows us to spot the patterns of features that led to survival. If the analysis purpose is located only to the prediction output and not why/how this ouput is produced, then ‘black-box’ models like artificial networks can also work as classifiers.</li>
-<li>It requires little data preparation.</li>
-<li>Time efficiency: follows the logarithmic cost model, which assigns a cost to every operation proportional to the number of data points used to train the tree.</li>
+<li>It is interpretable which allows us to spot the patterns of features that led to survival. If the analysis purpose is located only to the prediction output and not why/how this ouput is produced, then ‘black-box’ models like artificial networks could also work as our classifier.</li>
+<li>It does not require much data preparation.</li>
 <li>It is possible to validate the model using statistical tests to check its reliability.</li>
+<li>It’s time efficiency: follows the logarithmic cost model, which assigns a cost to every operation proportional to the number of data points used to train the tree.</li>
 </ol>
 <p><em>Reasons for not choosing it?</em></p>
 <ol>
-<li>Prone to overfitting as the growth of decision tree is increasing. Solutions to this could be implementing random forests (many decision tree models), pruning (removes parts of the tree that have little power on classification), or select the minimum number of samples required at a leaf node and the maximum depth of the tree. In our example, we follow the first and the latter approach.</li>
-<li>Small variations in the data might result in a completely different tree being generated. Solution: implement a random forest or other ensemble learning.</li>
+<li>Prone to overfitting, as the growth of decision tree is increasing. Solutions to this could be implementing random forests (many decision tree models), pruning (removes weak on classification parts of the tree), or decide the minimum number of samples required at a leaf node and the maximum depth of the tree. In our example, we follow the first and the latter approach.</li>
+<li>Small variations in the data might result in a completely different tree being generated. Solution: implement a random forest or other ensemble learning to cross chack the valid tree.</li>
 <li>It needs a balanced dataset (not dominated labels) to prevent biased trees. Hence, we have to include almost equal number of ‘survived’ and ‘not survived’ examples.</li>
 <li>It is an NP-complete problem, like sudoku, sparse approximation, vehicle routing problem and graph coloring. Although, the solutions to that problems can be evaluated quickly (in polynomial time), they can not be found fast at the first place. </li>
 </ol>
